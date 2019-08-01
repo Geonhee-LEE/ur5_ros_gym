@@ -1,0 +1,39 @@
+<launch>
+
+  <include file="$(find rl_moveit_config)/launch/planning_context.launch" >
+    <arg name="load_robot_description" value="true" />
+  </include>
+
+  <!-- not sure this node is neccessary -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/joint_states]</rosparam>
+  </node>
+
+  <!-- The planning and execution components of MoveIt! configured to  
+       publish the current configuration of the robot (simulated or real)  
+       and the current state of the world as seen by the planner -->
+  <include file="$(find rl_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+  
+  <!--
+  <include file="$(find rl_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+  </include>
+  -->
+
+  <node name="curr_pose_publisher" pkg="rl_moveit" type="current_pose_publisher.py">
+  </node>
+
+  <node name="action_subscriber" pkg="rl_moveit" type="planning_script.py">
+  </node>
+
+  <node name="action_subscriber_screwing" pkg="rl_moveit" type="screw_control.py">
+  </node>
+
+  <node name="curr_joint_value_publisher" pkg="rl_moveit" type="current_screw_joint_publisher.py">
+  </node>
+
+</launch>
+

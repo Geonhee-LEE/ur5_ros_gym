@@ -1,0 +1,33 @@
+<sdf version='1.6'>
+  <world name='default'>
+
+    <include>
+      <uri>model://rl_gazebo_sim/parts_descriptions/tables</uri>
+      <name>tables</name>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+        <uri>model://rl_gazebo_sim/parts_descriptions/work_piece</uri> <!--This only works because i exported the gazebo path in the package.xml file-->
+        <name>work_piece</name>
+        <pose>0.5 0 1 0 0 0</pose>
+    </include>
+
+    <include>
+        <uri>model://sun</uri>
+    </include>
+
+    <include>
+        <uri>model://ground_plane</uri>
+        <name>world</name>
+    </include>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>4.39316 -3.00315 2.31125 0 0.399643 2.44019</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

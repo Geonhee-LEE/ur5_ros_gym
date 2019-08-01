@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package>
+  <name>rl_gazebo_sim</name>
+  <version>1.0.0</version>
+  <description>
+      Gazebo wrapper for the Universal UR5 robot arm.
+  </description>
+
+  <author email="hbdb15@student.aau.dk">Hjalte Nielsen</author>
+  <maintainer email="hbdb15@student.aau.dk">Hjalte Nielsen</maintainer>
+
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>rospy</buildtool_depend>
+  
+  <run_depend>ur_description</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>gazebo_ros_control</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>joint_trajectory_controller</run_depend>
+  <run_depend>effort_controllers</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+  
+
+<export>
+    <!-- gazebo_ros_paths_plugin automatically adds these to
+        GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
+        the package.xml file. You can than use URIs of type model://my_package/stuff. -->
+    <gazebo_ros                                                                 
+        gazebo_plugin_path="${prefix}/lib"
+        gazebo_model_path="${prefix}/../" /> <!-- this ends up as the folder rl_project --> 
+</export>
+</package>

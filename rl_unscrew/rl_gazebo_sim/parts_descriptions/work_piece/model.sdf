@@ -1,0 +1,132 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+
+  <model name='work_piece'>
+    <link name='screw'>
+      <pose frame=''>0 0 0.007 0 0 0</pose>
+      <inertial>
+        <mass>0.010</mass>
+        <inertia>
+          <ixx>0.166667</ixx>
+          <ixy>0.1</ixy>nch
+          <ixz>0.1</ixz>
+          <iyy>0.166667</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.166667</izz>
+        </inertia>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://rl_gazebo_sim/parts_descriptions/meshes/screw.STL</uri>
+            <scale>1.08 1.08 1.0</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+        </material>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://rl_gazebo_sim/parts_descriptions/meshes/screw.STL</uri>
+            <scale>1.08 1.08 1</scale> <!-- scaled so the screw bit can actually enter the screw -->
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.5</mu>
+            </ode>
+          </friction>
+        </surface>    
+      </collision>
+    </link>
+
+    <link name='block'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>10</mass>
+        <inertia>
+          <ixx>0.166667</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.166667</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.166667</izz>
+        </inertia>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <!--box>
+            <size>0.030 0.030 0.030</size>
+          </box-->
+          <mesh>
+            <uri>model://rl_gazebo_sim/parts_descriptions/meshes/block.STL</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+        </material>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <!--box>
+            <size>0.030 0.030 0.030</size>
+          </box-->
+          <mesh>
+            <uri>model://rl_gazebo_sim/parts_descriptions/meshes/block.STL</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name='screw_block' type='screw'>
+      <parent>block</parent>
+      <child>screw</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <thread_pitch>-2000</thread_pitch>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>0</use_parent_model_frame>
+        <limit>
+          <lower>0</lower>
+          <upper>50</upper>
+          <effort>-1</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0.0</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name='block_world' type='fixed'>
+      <parent>world</parent>
+      <child>block</child>
+    </joint>
+
+    <static>0</static>
+    <allow_auto_disable>0</allow_auto_disable>
+  </model>
+
+</sdf>
