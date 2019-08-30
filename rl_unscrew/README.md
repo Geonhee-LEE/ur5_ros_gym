@@ -15,9 +15,10 @@ This is repository is by as a 6th semester project at Aalborg University.
 Install ROS Kinetic following [this guide](http://wiki.ros.org/kinetic/Installation/Ubuntu) from the ROS wiki.  
 Install ROS dependencies
 ```bash
-sudo apt -get  install  python -rosinstall  python -rosinstall -generator  python -wstool  build -essential
-sudo apt -get  install ros -kinetic -moveit
-sudo apt -get  install ros -kinetic -ros -control ros -kinetic -ros -controllers  ros -kinetic -gazebo -ros -controlros -kinetic -gazebo -pkgs ros -kinetic -controller -manager
+sudo apt-get  install  python-rosinstall  python-rosinstall-generator  python-wstool  build-essential
+sudo apt-get  install ros-kinetic -moveit
+sudo apt-get  install ros-kinetic-ros-control ros-kinetic-ros-controllers  ros-kinetic-gazebo-ros ros-kinetic-gazebo-ros-control 
+ ros-kinetic-controller-manager
 ```
 
 Install OpenAIGym.
