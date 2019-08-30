@@ -26,35 +26,6 @@ Install OpenAIGym.
 pip  install  gym ==0.10.5
 ```
 
-
-Install Catkin Tools used to build the packages.
-```bash
-sudo apt-get update
-sudo apt-get install python-catkin-tools
-```
-
-Create a catkin workspace and initialise it as a workspace
-```bash
-mkdir ~/catkin_ws/src
-cd ~/catkin_ws
-catkin init
-catkin build
-```
-
-Clone this repository as well as the universal_robot repository containing all the UR robots, into the src folder.
-```bash
-cd ~/catkin_ws/src
-git clone https://github.com/ros-industrial/universal_robot.git
-git clone https://github.com/hjalte33/rl_unscrew.git
-```
-
-run catkin build to build all the packages, and dont forget to sorce the workspcae. 
-```bash
-cd ~/catkin_ws
-catkin build
-source devel/setup.bash
-```
-
 ## Launch example aplication
 In order to launch the framework three things must be launched. First the Gazebo simulation.
 ```bash
